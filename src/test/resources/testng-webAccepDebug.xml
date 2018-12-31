@@ -1,0 +1,16 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+
+<suite name="Debug" verbose="1">
+
+    <test name="Web">
+        <groups>
+            <run>
+                <include name="acceptance"/>
+            </run>
+        </groups>
+        <classes>
+            <class name="com.ezlo.automation.framework.tests.web.ocs.SignInTestsDebug"/>
+        </classes>
+    </test>
+
+</suite>

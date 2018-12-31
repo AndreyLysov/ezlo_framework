@@ -1,0 +1,12 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+
+<suite name="Meb" verbose="1">
+
+    <test name="Smoke - stable tests of different components, and platforms etc.">
+        <classes>
+            <class name="com.ezlo.automation.framework.tests.web.ocs.SignInTests"/>
+            <class name="com.ezlo.automation.framework.tests.CustomerCreationTests"/>
+        </classes>
+    </test>
+
+</suite>

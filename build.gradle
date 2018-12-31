@@ -1,0 +1,341 @@
+plugins {
+    id "org.sonarqube" version "2.6"
+}
+apply plugin: 'java'
+apply plugin: 'idea'
+
+sourceCompatibility = 1.8
+
+repositories {
+    mavenCentral()
+    jcenter()
+    maven {
+        url "https://maven.atlassian.com/content/repositories/atlassian-public/"
+    }
+}
+
+configurations {
+    agent
+}
+
+dependencies {
+    agent 'org.aspectj:aspectjweaver:1.9.1'
+    compile 'org.testng:testng:6.13.1'
+    compile 'org.hamcrest:java-hamcrest:2.0.0.0'
+    compile 'com.beust:jcommander:1.72'
+    compile 'com.thoughtworks.xstream:xstream:1.4.10'
+    compile 'com.google.code.gson:gson:2.8.2'
+    compile group: 'log4j', name: 'log4j', version: '1.2.17'
+    compile group: 'io.qameta.allure', name: 'allure-gradle', version: '2.5'
+    compile group: 'io.qameta.allure', name: 'allure-testng', version: '2.0-BETA3'
+    compile group: 'org.seleniumhq.selenium', name: 'selenium-java', version: '3.12.0'
+    compile group: 'io.appium', name: 'java-client', version: '6.1.0'
+    compile 'org.hibernate:hibernate-core:5.2.12.Final'
+    compile 'org.mongodb.morphia:morphia:1.3.2'
+    compile group: 'org.postgresql', name: 'postgresql', version: '42.2.4'
+    compile group: 'com.j256.ormlite', name: 'ormlite-jdbc', version: '5.1'
+    compile 'joda-time:joda-time:2.10'
+    compile group: 'org.avaje', name: 'avaje-agentloader', version: '2.1.2'
+    compile group: 'com.atlassian.jira', name: 'jira-rest-java-client-core', version: '5.0.4'
+    compile group: 'com.atlassian.jira', name: 'jira-rest-java-client-api', version: '5.0.4'
+    compile group: 'com.atlassian.fugue', name: 'fugue', version: '2.7.0'
+    compile group: 'org.java-websocket', name: 'Java-WebSocket', version: '1.3.9'
+    compile group: 'org.mindrot', name: 'jbcrypt', version: '0.4'   //this library is used for crypting passwords in OCS project
+    compile group: 'com.google.guava', name: 'guava', version: '19.0' // it is necessary for jira integrations
+}
+
+// suite=["accept", "end2end", "func", "smoke"]
+// seleniumServer=["http://192.168.11.100:4444/wd/hub"]
+// driver=["appium"]
+// appiumServer=["http://127.0.0.1:4723/wd/hub"]
+// os=["LINUX", "MAC", "WINDOWS"]
+// platform=["web, "mob", "meb"]
+// browser=["chrome", "firefox", "MicrosoftEdge", "internet explorer", "safari"]
+// appProps=["stageAuto.properties", "stageQA.properties", "stageStaging.properties"]
+// deviceCaps=["nexus_5x_8_1_0.json", "samsung_tab_a_7_1_1.json", "emulator_nexus_5x_8_1_0.json"]
+// appCaps=["mob_android_ezlo_qa.json"]
+//
+task testsTask(type: Test) {
+    doFirst {
+        jvmArgs "-javaagent:${configurations.agent.singleFile}"
+    }
+    useTestNG() {
+        if (project.hasProperty('suites')) {
+            suites "${suites}"
+        }
+    }
+    if (project.hasProperty('target')) {
+        systemProperty 'target', "${target}"
+    }
+    if (project.hasProperty('seleniumServer')) {
+        systemProperty 'seleniumServer', "${seleniumServer}"
+    }
+    if (project.hasProperty('driver')) {
+        systemProperty 'driver', "${driver}"
+    }
+    if (project.hasProperty('os')) {
+        systemProperty 'os', "${os}"
+    }
+    if (project.hasProperty('platform')) {
+        systemProperty 'platform', "${platform}"
+    }
+    if (project.hasProperty('browser')) {
+        systemProperty 'browser', "${browser}"
+    }
+    if (project.hasProperty('appProps')) {
+        systemProperty 'appProps', "${appProps}"
+    }
+    if (project.hasProperty('deviceCaps')) {
+        systemProperty 'deviceCaps', "${deviceCaps}"
+    }
+    if (project.hasProperty('appCaps')) {
+        systemProperty 'appCaps', "${appCaps}"
+    }
+    if (project.hasProperty('allure')) {
+        systemProperty 'allure', "${allure}"
+    }
+}
+/*
+    "ssh": "test_automation@selenium-hub.client.lan -p 8822",
+    "seleniumServer": "http://192.168.11.100:4444/wd/hub",
+    "pass": "ProxmoxKh;",
+*/
+
+// CI/CD
+// |_ AUTO
+// |_|_ Unit
+task Linux_Unit_Framework_All__(type: Test) {
+    systemProperty appProps, appProps_nma_stageQA
+    useTestNG() {
+        suites suite_unit_framework_all
+    }
+}
+// |_|_ Integration
+task Api_REST_MMS_Demo(type: Test) {
+    systemProperty appProps, appProps_mms_stageStaging
+    useTestNG() {
+        suites suite_be_rest_mms_api
+    }
+}
+task Api_WS_NMA_Demo(type: Test) {
+    systemProperty appProps, appProps_nma_stageQA
+    useTestNG() {
+        suites suite_smoke_api_ws
+    }
+}
+// |_|_ System
+// |_|_|_ UI::Linux::Web
+task Linux_CH_OCS2_All(type: Test) {
+    systemProperty appProps, appProps_nma_stageQA
+    systemProperty target, target_jenkins
+    systemProperty platform, platform_web
+    systemProperty os, os_unix
+    systemProperty browser, browser_chrome
+    useTestNG() {
+        suites suite_system_web_ocs
+    }
+}
+task Linux_FF_OCS2_All(type: Test) {
+    systemProperty appProps, appProps_nma_stageQA
+    systemProperty target, target_jenkins
+    systemProperty platform, platform_web
+    systemProperty os, os_unix
+    systemProperty browser, browser_firefox
+    useTestNG() {
+        suites suite_system_web_ocs
+    }
+}
+// |_|_|_ UI::Mac::Web
+task Mac_CH_OCS2_All(type: Test) {
+    systemProperty appProps, appProps_nma_stageQA
+    systemProperty target, target_jenkins
+    systemProperty platform, platform_web
+    systemProperty os, os_mac
+    systemProperty browser, browser_chrome
+    useTestNG() {
+        suites suite_system_web_ocs
+    }
+}
+task Mac_FF_OCS2_All(type: Test) {
+    systemProperty appProps, appProps_nma_stageQA
+    systemProperty target, target_jenkins
+    systemProperty platform, platform_web
+    systemProperty os, os_mac
+    systemProperty browser, browser_firefox
+    useTestNG() {
+        suites suite_system_web_ocs
+    }
+}
+task Mac_SF_OCS2_All(type: Test) {
+    systemProperty appProps, appProps_nma_stageQA
+    systemProperty target, target_jenkins
+    systemProperty platform, platform_web
+    systemProperty os, os_mac
+    systemProperty browser, browser_safari
+    useTestNG() {
+        suites suite_system_web_ocs
+    }
+}
+// |_|_|_ UI::Windows::Web
+task Win_CH_OCS2_All(type: Test) {
+    systemProperty appProps, appProps_nma_stageQA
+    systemProperty target, target_jenkins
+    systemProperty platform, platform_web
+    systemProperty os, os_win
+    systemProperty browser, browser_chrome
+    useTestNG() {
+        suites suite_system_web_ocs
+    }
+}
+task Win_FF_OCS2_All(type: Test) {
+    systemProperty appProps, appProps_nma_stageQA
+    systemProperty target, target_jenkins
+    systemProperty platform, platform_web
+    systemProperty os, os_win
+    systemProperty browser, browser_firefox
+    useTestNG() {
+        suites suite_system_web_ocs
+    }
+}
+task Win_IE_OCS2_All(type: Test) {
+    systemProperty appProps, appProps_nma_stageQA
+    systemProperty target, target_jenkins
+    systemProperty platform, platform_web
+    systemProperty os, os_win
+    systemProperty browser, browser_ie
+    useTestNG() {
+        suites suite_system_web_ocs
+    }
+}
+task Win_DG_OCS2_All(type: Test) {
+    systemProperty appProps, appProps_nma_stageQA
+    systemProperty target, target_jenkins
+    systemProperty platform, platform_web
+    systemProperty os, os_win
+    systemProperty browser, browser_dg
+    useTestNG() {
+        suites suite_system_web_ocs
+    }
+}
+// |_|_|_ UI::Android::Web
+// |_|_|_ UI::Android::App
+// |_|_|_ UI::iOS::Web
+// |_|_|_ UI::iOS::App
+// |_ QA
+// |_|_ System ??
+// |_|_|_ Acceptance ??
+// |_ STAGING
+// |_|_ Regression ??
+// |_|_ System ??
+// |_|_|_ End2End ??
+// |_|_ Performance
+// |_ PROD
+// |_|_ Acceptance
+task Linux_CH_OCS2_Accept(type: Test) {
+    systemProperty appProps, appProps_nma_stagePROD
+    systemProperty target, target_jenkins
+    systemProperty platform, platform_web
+    systemProperty os, os_unix
+    systemProperty browser, browser_chrome
+    useTestNG() {
+        suites suite_accept_web_ocs
+    }
+}
+task Linux_FF_OCS2_Accept(type: Test) {
+    systemProperty appProps, appProps_nma_stageQA
+    systemProperty target, target_jenkins
+    systemProperty platform, platform_web
+    systemProperty os, os_unix
+    systemProperty browser, browser_firefox
+    useTestNG() {
+        suites suite_accept_web_ocs
+    }
+}
+task Mac_CH_OCS2_Accept(type: Test) {
+    systemProperty appProps, appProps_nma_stageQA
+    systemProperty target, target_jenkins
+    systemProperty platform, platform_web
+    systemProperty os, os_mac
+    systemProperty browser, browser_chrome
+    useTestNG() {
+        suites suite_accept_web_ocs
+    }
+}
+task Mac_FF_OCS2_Accept(type: Test) {
+    systemProperty appProps, appProps_nma_stageQA
+    systemProperty target, target_jenkins
+    systemProperty platform, platform_web
+    systemProperty os, os_mac
+    systemProperty browser, browser_firefox
+    useTestNG() {
+        suites suite_accept_web_ocs
+    }
+}
+task Mac_SF_OCS2_Accept(type: Test) {
+    systemProperty appProps, appProps_nma_stageQA
+    systemProperty target, target_jenkins
+    systemProperty platform, platform_web
+    systemProperty os, os_mac
+    systemProperty browser, browser_safari
+    useTestNG() {
+        suites suite_accept_web_ocs
+    }
+}
+task Win_CH_OCS2_Accept(type: Test) {
+    systemProperty appProps, appProps_nma_stageQA
+    systemProperty target, target_jenkins
+    systemProperty platform, platform_web
+    systemProperty os, os_win
+    systemProperty browser, browser_chrome
+    useTestNG() {
+        suites suite_accept_web_ocs
+    }
+}
+task Win_FF_OCS2_Accept(type: Test) {
+    systemProperty appProps, appProps_nma_stageQA
+    systemProperty target, target_jenkins
+    systemProperty platform, platform_web
+    systemProperty os, os_win
+    systemProperty browser, browser_firefox
+    useTestNG() {
+        suites suite_accept_web_ocs
+    }
+}
+task Win_IE_OCS2_Accept(type: Test) {
+    systemProperty appProps, appProps_nma_stageQA
+    systemProperty target, target_jenkins
+    systemProperty platform, platform_web
+    systemProperty os, os_win
+    systemProperty browser, browser_ie
+    useTestNG() {
+        suites suite_accept_web_ocs
+    }
+}
+task Win_DG_OCS2_Accept(type: Test) {
+    systemProperty appProps, appProps_nma_stageQA
+    systemProperty target, target_jenkins
+    systemProperty platform, platform_web
+    systemProperty os, os_win
+    systemProperty browser, browser_dg
+    useTestNG() {
+        suites suite_accept_web_ocs
+    }
+}
+
+// Debug
+task eZLO_Debug_Local(type: Test) {
+    systemProperty appProps, appProps_nma_stageQA
+    useTestNG() {
+        suites "src/test/resources/testng/unit/sqlTestNG.xml"
+    }
+}
+task eZLO_Debug_Remote(type: Test) {
+    systemProperty appProps, appProps_nma_stageQA
+    systemProperty target, target_jenkins
+    systemProperty platform, platform_web
+    systemProperty os, os_mac
+    systemProperty browser, browser_chrome
+    useTestNG() {
+        suites "src/test/resources/testng/debug/jenkins/testng.xml"
+    }
+}

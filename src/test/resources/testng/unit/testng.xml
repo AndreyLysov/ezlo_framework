@@ -1,0 +1,13 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+
+<suite name="Unit" verbose="1">
+
+    <test name="All">
+        <classes>
+            <class name="com.ezlo.automation.framework.tests.unit.db.SQLUnitTest"/>
+            <class name="com.ezlo.automation.framework.tests.unit.db.NoSQLUnitTest"/>
+            <class name="com.ezlo.automation.framework.tests.unit.jira.JiraUtilTest"/>
+        </classes>
+    </test>
+
+</suite>

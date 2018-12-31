@@ -1,0 +1,16 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+
+<suite name="Unit" verbose="1">
+
+    <test name="Mobile android tests">
+        <groups>
+            <run>
+                <include name="android"/>
+            </run>
+        </groups>
+        <classes>
+            <class name="com.ezlo.automation.framework.tests.unit.drivers.mob.LaunchMobAppByAppiumDriverTests"/>
+        </classes>
+    </test>
+
+</suite>

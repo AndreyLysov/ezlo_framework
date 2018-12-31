@@ -1,0 +1,18 @@
+[
+  {
+    "dstOffset": 94,
+    "latitude": 40.8302367,
+    "longitude": -74.2081525,
+    "rawOffset": 0,
+    "timeOffset": 0,
+    "timeZoneId": "EST"
+  },
+  {
+    "dstOffset": 104,
+    "latitude": 49.986007,
+    "longitude": 36.229155,
+    "rawOffset": -20000,
+    "timeOffset": 0,
+    "timeZoneId": "Europe/Kiev"
+  }
+]

@@ -1,0 +1,17 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+
+<suite name="Web" verbose="1">
+
+    <test name="Functional - fundamental tests and atomic cases, do something and verify system response.">
+        <groups>
+            <run>
+                <include name="functional"/>
+                <include name="ezlo"/>
+            </run>
+        </groups>
+        <classes>
+            <class name="com.ezlo.automation.framework.tests.mob.LaunchMobAppTests"/>
+        </classes>
+    </test>
+
+</suite>

@@ -1,0 +1,6 @@
+[
+  {
+    "appPackage": "com.zlink.smarthome",
+    "appActivity": "com.ezlo.smarthome.mvvm.features.splash.SplashActivity"
+  }
+]

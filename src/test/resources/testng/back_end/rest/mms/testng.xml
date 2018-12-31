@@ -1,0 +1,11 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+
+<suite name="Smoke" verbose="1">
+
+    <test name="REST">
+        <classes>
+            <class name="com.ezlo.automation.framework.tests.api.rest.RestApiTest"/>
+        </classes>
+    </test>
+
+</suite>

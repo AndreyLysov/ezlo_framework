@@ -1,0 +1,14 @@
+[
+  {
+    "id": 1,
+    "name": "NMA Amazon QA ",
+    "url": "wss://nma-qa.ezlo.com:443",
+    "key": "qa",
+    "username": "support@ezlo.com",
+    "password": "ede9e550111ac3ee65c66fa781106229",
+    "sender": "admin1@ezlo.com",
+    "dev": false,
+    "map_color": "OrangeRed",
+    "isEnabled": true
+  }
+]

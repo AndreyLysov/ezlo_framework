@@ -1,0 +1,89 @@
+[
+  {
+    "autoBackupDone": true,
+    "autoFirmwareUpdate": true,
+    "deleted": false,
+    "description": "test_1 Description",
+    "disabled": false,
+    "disconnected_at": "2018-09-18 15:09:36.831000",
+    "ezlo_connected_at": "2018-09-18 15:09:36.835000",
+    "firmware": "0.34.96",
+    "imageId": "test_1 image",
+    "locked": false,
+    "properties": {
+      "ezloColor": "#009933",
+      "ezloLocation": {
+        "dstOffset": 0,
+        "latitude": 0.0,
+        "longitude": 0.0,
+        "rawOffset": 0,
+        "timeOffset": 0,
+        "timeZoneId": ""
+      }
+    },
+    "registered": true,
+    "serial": "ifjif4hv5w5730",
+    "serial_hash": "7b428896a2374d3d43d82e4ae6f39c18",
+    "shouldBeCleaned": false,
+    "company": "testCompany_1",
+    "owner": "testOwner_1"
+  },
+  {
+    "autoBackupDone": true,
+    "autoFirmwareUpdate": true,
+    "deleted": false,
+    "description": "test_2 Description",
+    "disabled": false,
+    "disconnected_at": "2018-09-18 15:09:36.841000",
+    "ezlo_connected_at": "2018-09-18 15:09:36.841000",
+    "firmware": "0.34.96",
+    "imageId": "test_2 image",
+    "locked": false,
+    "properties": {
+      "ezloColor": "#009933",
+      "ezloLocation": {
+        "dstOffset": 0,
+        "latitude": 0.0,
+        "longitude": 0.0,
+        "rawOffset": 0,
+        "timeOffset": 0,
+        "timeZoneId": ""
+      }
+    },
+    "registered": true,
+    "serial": "snlq4yutyp8400",
+    "serial_hash": "781beae0f989a79065b53b2bf4adcc07",
+    "shouldBeCleaned": false,
+    "company": "testCompany_2",
+    "owner": "testOwner_2"
+  },
+  {
+    "autoBackupDone": true,
+    "autoFirmwareUpdate": true,
+    "deleted": false,
+    "description": "test_3 Description",
+    "disabled": false,
+    "disconnected_at": "2018-09-18 15:09:36.842000",
+    "ezlo_connected_at": "2018-09-18 15:09:36.842000",
+    "firmware": "0.34.96",
+    "imageId": "test_3 image",
+    "locked": false,
+    "properties": {
+      "ezloColor": "#009933",
+      "ezloLocation": {
+        "dstOffset": 0,
+        "latitude": 0.0,
+        "longitude": 0.0,
+        "rawOffset": 0,
+        "timeOffset": 0,
+        "timeZoneId": ""
+      }
+    },
+    "registered": true,
+    "serial": "s7an3drx6b8420",
+    "serial_hash": "539050f9b3024c230980d6d335d9f404",
+    "shouldBeCleaned": false,
+    "company": "testCompany_3",
+    "owner": "testOwner_3"
+  }
+]

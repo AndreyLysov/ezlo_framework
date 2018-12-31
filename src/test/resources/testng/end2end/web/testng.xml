@@ -1,0 +1,16 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+
+<suite name="Web" verbose="1">
+
+    <test name="End2end - extra cases, like use cases or end2end scenarios, based on unusual scenarios and especially on bugs reported by user.">
+        <groups>
+            <run>
+                <include name="end2end"/>
+            </run>
+        </groups>
+        <classes>
+            <class name="com.ezlo.automation.framework.tests.web.ocs.SignInTests"/>
+        </classes>
+    </test>
+
+</suite>

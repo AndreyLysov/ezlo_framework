@@ -1,0 +1,11 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+
+<suite name="Mob" verbose="1">
+
+    <test name="AndroidTests">
+        <classes>
+            <class name="com.ezlo.automation.framework.tests.unit.drivers.mob.LaunchMobAppByAppiumDriverTests"/>
+        </classes>
+    </test>
+
+</suite>

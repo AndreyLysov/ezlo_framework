@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC
+        "-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+        "http://hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+    <session-factory>
+        <mapping class="com.ezlo.automation.framework.model.ocs.data.AccountData" />
+        <mapping class="com.ezlo.automation.framework.model.ocs.data.AccountRoleData" />
+        <mapping class="com.ezlo.automation.framework.model.ocs.data.AclActionData" />
+        <mapping class="com.ezlo.automation.framework.model.ocs.data.AclContextData" />
+        <mapping class="com.ezlo.automation.framework.model.ocs.data.AclRolePermissionData" />
+        <mapping class="com.ezlo.automation.framework.model.ocs.data.CompanyData" />
+        <mapping class="com.ezlo.automation.framework.model.ocs.data.CompanyNmaData" />
+        <mapping class="com.ezlo.automation.framework.model.ocs.data.CountryData" />
+        <mapping class="com.ezlo.automation.framework.model.ocs.data.CountryNmaData" />
+        <mapping class="com.ezlo.automation.framework.model.ocs.data.HubNmaData" />
+        <mapping class="com.ezlo.automation.framework.model.ocs.data.NmaData" />
+        <mapping class="com.ezlo.automation.framework.model.ocs.data.RequestSqlData" />
+        <mapping class="com.ezlo.automation.framework.model.ocs.data.RoleData" />
+        <mapping class="com.ezlo.automation.framework.model.ocs.data.TicketData" />
+        <mapping class="com.ezlo.automation.framework.model.ocs.data.TicketStatusData" />
+        <mapping class="com.ezlo.automation.framework.model.ocs.data.TicketSubjectData" />
+        <mapping class="com.ezlo.automation.framework.model.ocs.data.UserStatusData" />
+    </session-factory>
+</hibernate-configuration>

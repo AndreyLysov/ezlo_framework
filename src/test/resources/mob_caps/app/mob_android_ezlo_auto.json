@@ -1,0 +1,6 @@
+[
+  {
+    "appPackage": "com.ezlo.smarthome.auto",
+    "appActivity": "com.ezlo.smarthome.mvvm.features.splash.SplashActivity"
+  }
+]

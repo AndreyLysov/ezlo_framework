@@ -1,0 +1,24 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-configuration PUBLIC
+        "-//Hibernate/Hibernate Configuration DTD//EN"
+        "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+
+<hibernate-configuration>
+
+    <session-factory>
+
+        <!-- properties -->
+        <property name="hibernate.connection.driver_class">org.postgresql.Driver</property>
+        <property name="hibernate.connection.url">jdbc:postgresql://osc-aws.cypvwvppcbpb.us-east-1.rds.amazonaws.com/ocs-qa</property>
+        <property name="hibernate.connection.username">dbuser</property>
+        <property name="hibernate.connection.password">k!VUbD9Vub2pJlY#</property>
+
+        <property name="hibernate.connection.pool_size">1</property>
+        <property name="hibernate.dialect">org.hibernate.dialect.PostgreSQL95Dialect</property>
+        <property name="show_sql">true</property>
+        <property name="format_sql">true</property>
+        <property name="hbm2ddl.auto">validate</property>
+
+    </session-factory>
+
+</hibernate-configuration>

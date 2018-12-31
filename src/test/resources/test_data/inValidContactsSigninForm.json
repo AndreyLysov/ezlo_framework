@@ -1,0 +1,29 @@
+[
+  {
+    "serverName": "qqqqq",
+    "name": "test0987654321",
+    "email": "test0987654321@test.com",
+    "phone": "0987654321",
+    "address": "test0987654321",
+    "password": "Qwerty123",
+    "confirmPassword": "Qwerty123"
+  },
+  {
+    "serverName": "NMA Amazon QA",
+    "name": "test1234567890",
+    "email": "test1234567890@test.com",
+    "phone": "1234567890",
+    "address": "test1234567890",
+    "password": "Qwerty123",
+    "confirmPassword": "Qwerty123"
+  },
+  {
+    "serverName": "NMA Amazon QA",
+    "name": "test1234567890",
+    "email": "test1234567890@test.com",
+    "phone": "1234567890",
+    "address": "test1234567890",
+    "password": "Qwerty123",
+    "confirmPassword": "Qwert123"
+  }
+]

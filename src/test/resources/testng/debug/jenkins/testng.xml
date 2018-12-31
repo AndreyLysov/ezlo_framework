@@ -1,0 +1,11 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+
+<suite name="OCS" verbose="1">
+
+    <test name="System - acceptance, functional and end2end tests.">
+        <classes>
+            <class name="com.ezlo.automation.framework.tests.web.ocs.SignInTestsDebug"/>
+        </classes>
+    </test>
+
+</suite>

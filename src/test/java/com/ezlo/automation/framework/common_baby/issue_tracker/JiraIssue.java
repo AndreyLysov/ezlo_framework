@@ -1,0 +1,13 @@
+package com.ezlo.automation.framework.common_baby.issue_tracker;
+
+
+import java.lang.annotation.ElementType;
+import java.lang.annotation.Retention;
+import java.lang.annotation.RetentionPolicy;
+import java.lang.annotation.Target;
+
+@Retention(RetentionPolicy.RUNTIME)
+@Target(ElementType.METHOD)
+public @interface JiraIssue {
+    String value() default "";
+}

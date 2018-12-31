@@ -1,0 +1,14 @@
+[
+  {
+    "automationName": "UIAutomation",
+    "platformName": "Android",
+    "platformVersion": "8.1.0",
+    "deviceName": "Nexus 5X",
+    "udid" : "00caf8dc27f5b7ac",
+    "noSign": "true",
+    "printPageSourceOnFindFailure": "true",
+    "ignoreUnimportantViews": "true",
+    "unlockType": "pin",
+    "unlockKey": "1230"
+  }
+]
